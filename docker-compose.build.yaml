@@ -1,0 +1,13 @@
+version: '3.9'
+services:
+  apps:
+    image: dimmaryanto93/training-cloudnative-uny:mahasiswa-v1
+    ports:
+      - 8080:8080
+    build:
+      dockerfile: Dockerfile
+      context: ./
+      args:
+        JAR_FILE: "mahasiswa-0.0.1-SNAPSHOT.jar"
+    environment:
+      DATABASE_HOST: postgres
