@@ -1,0 +1,14 @@
+version: '3.9'
+volumes:
+  pg_data: {}
+services:
+  postgres:
+    image: postgres:15.4
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_PASSWORD: mahasiswa
+      POSTGRES_USER: mahasiswa
+      POSTGRES_DB: mahasiswa
+    volumes:
+      - pg_data:/var/lib/postgresql/data
