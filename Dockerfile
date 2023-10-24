@@ -1,5 +1,6 @@
 ARG JDK_VERSION=17-alpine
-FROM private.nexus-registry.docker.local:8086/eclipse-temurin:${JDK_VERSION}
+ARG PRIVATE_REG=docker.io/
+FROM ${PRIVATE_REG}eclipse-temurin:${JDK_VERSION}
 
 LABEL maintener="Dimas Maryanto <software.dimas_m@icloud.com>"
 
