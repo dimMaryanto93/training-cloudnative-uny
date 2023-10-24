@@ -3,8 +3,11 @@ stages:
 
 variables:
     DOCKER_IMAGE: private.nexus-registry.docker.local:8086/alpine
+    AWS_CRED: dari file
 
 print-env:
     image: $DOCKER_IMAGE
+    variables:
+        AWS_CRED: inside task
     script: 
         - echo "Hi this is from gitlab ci with env $AWS_CRED"
