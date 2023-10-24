@@ -6,4 +6,5 @@ variables:
 
 print-env:
     image: $DOCKER_IMAGE
-    script: "echo 'Hi this is from gitlab ci with env: $AWS_CRED'"
+    script: 
+        - echo "Hi this is from gitlab ci with env: $AWS_CRED"
