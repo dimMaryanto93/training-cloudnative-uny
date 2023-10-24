@@ -1,6 +1,7 @@
 stages:
     - test
     - build
+    - publish
 
 variables:
     DOCKER_IMAGE: private.nexus-registry.docker.local:8086/maven:3.9.5-eclipse-temurin-17-alpine
@@ -19,6 +20,7 @@ build-jar:
         name: build-jar
 
 build-docker:
+    stage: publish
     image: private.nexus-registry.docker.local:8086/docker:${DOCKER_VERSION}
     services:
     - name: private.nexus-registry.docker.local:8086/docker:${DOCKER_DIND_VERSION}
@@ -32,7 +34,7 @@ build-docker:
       DOCKER_HOST: tcp://dockerd:2375
       DOCKER_DRIVER: overlay2
       DOCKER_TLS_CERTDIR: ""
-      DOCKER_BUILD_ARGS_ENTRIPOINT: "--args JARFILE=mahasiswa-0.0.1-SNAPSHOT.jar"
+      DOCKER_BUILD_ARGS_ENTRIPOINT: "--build-arg JAR_FILE=mahasiswa-0.0.1-SNAPSHOT.jar"
       DOCKERFILE_LOCATION: "-f Dockerfile"
       DOCKER_TAGS: 
         private.nexus-registry.docker.local:8087/uny/mahasiswa
