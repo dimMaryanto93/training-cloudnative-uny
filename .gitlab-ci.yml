@@ -11,6 +11,14 @@ variables:
 
 test-unit:
   stage: test
+  services:
+    - name: private.nexus-registry.docker.local:8086/postgres:15.4
+      alias: postgres
+      variables:
+        POSTGRES_PASSWORD: mahasiswa
+        POSTGRES_USER: mahasiswa
+        POSTGRES_DB: mahasiswa
+        DATABASE_HOST: postgres
   image: $DOCKER_IMAGE
   script:
     - mvn clean test
