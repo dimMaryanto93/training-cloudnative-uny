@@ -1,0 +1,6 @@
+stages:
+    - test
+
+print-env:
+    image: alpine
+    script: "echo 'Hi this is from gitlab ci'"
