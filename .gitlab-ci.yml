@@ -1,6 +1,9 @@
 stages:
     - test
 
+variables:
+    DOCKER_IMAGE: private.nexus-registry.docker.local:8086/alpine
+
 print-env:
-    image: private.nexus-registry.docker.local:8086/alpine
+    image: $DOCKER_IMAGE
     script: "echo 'Hi this is from gitlab ci'"
