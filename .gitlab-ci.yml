@@ -2,5 +2,5 @@ stages:
     - test
 
 print-env:
-    image: alpine
+    image: private.nexus-registry.docker.local:8086/alpine
     script: "echo 'Hi this is from gitlab ci'"
