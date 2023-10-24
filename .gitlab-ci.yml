@@ -2,10 +2,13 @@ stages:
     - test
 
 variables:
-    DOCKER_IMAGE: private.nexus-registry.docker.local:8086/alpine
-    AWS_CRED: "dari file"
+    DOCKER_IMAGE: private.nexus-registry.docker.local:8086/maven:3.9.5-eclipse-temurin-17-alpine
 
-print-env:
+build-jar:
     image: $DOCKER_IMAGE
     script: 
-        - echo "Hi this is from gitlab ci with env $AWS_CRED"
+        - mvn clean -DskipTests package
+    artifacts:
+        paths:
+            - target/*.jar
+        name: build-jar
