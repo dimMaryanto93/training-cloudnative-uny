@@ -10,4 +10,3 @@ patches:
       name: mahasiswa-service
       kind: Deployment
       version: v1
-      group: app

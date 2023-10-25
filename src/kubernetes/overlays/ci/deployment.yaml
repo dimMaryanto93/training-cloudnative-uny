@@ -4,7 +4,20 @@ metadata:
   name: mahasiswa-service
 spec:
   replicas: 5
+  selector:
+    matchLabels:
+      app: mahasiswa-service
+      tier: backend
+      env: testing
+      version: stable
   template:
+    metadata:
+      name: mahasiswa-service
+      labels:
+        app: mahasiswa-service
+        tier: backend
+        env: testing
+        version: stable
     spec:
       containers:
         - name: mahasiswa-service
