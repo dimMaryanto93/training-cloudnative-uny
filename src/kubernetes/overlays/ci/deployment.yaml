@@ -1,0 +1,11 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mahasiswa-service
+spec:
+  replicas: 5
+  template:
+    spec:
+      containers:
+        - name: mahasiswa-service
+          image: 10.42.29.77:8086/uny/mahasiswa:24be5801

@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: mahasiswa-service
+spec:
+  selector:
+    app: mahasiswa-service
+    tier: backend
+    env: testing
+    version: stable
+  ports:
+    - protocol: TCP
+      port: 8080
+      targetPort: 8080
+  type: NodePort

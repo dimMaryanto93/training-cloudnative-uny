@@ -1,0 +1,51 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mahasiswa-service
+  labels:
+    app: mahasiswa-service
+    tier: backend
+    env: testing
+    version: stable
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mahasiswa-service
+      tier: backend
+      env: testing
+      version: stable
+  template:
+    metadata:
+      name: mahasiswa-service
+      labels:
+        app: mahasiswa-service
+        tier: backend
+        env: testing
+        version: stable
+    spec:
+      containers:
+        - name: mahasiswa-service
+          image: private.nexus-registry.docker.local:8086/uny/mahasiswa:123434
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8080
+          resources:
+            requests:
+              cpu: 500m
+              memory: 200Mi
+            limits:
+              cpu: 2000m
+              memory: 1Gi
+          livenessProbe:
+            httpGet:
+              port: 8080
+              path: /actuator/health/liveness
+            periodSeconds: 1
+            initialDelaySeconds: 3
+          startupProbe:
+            httpGet:
+              port: 8080
+              path: /actuator/health/readiness
+            initialDelaySeconds: 5
+      restartPolicy: Always

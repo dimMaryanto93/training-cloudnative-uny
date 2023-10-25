@@ -1,0 +1,12 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mahasiswa-service
+spec:
+  replicas: 5
+  template:
+    spec:
+      containers:
+        - name: mahasiswa-service
+          image: private.nexus-registry.docker.local:8086/uny/mahasiswa:latest
+
