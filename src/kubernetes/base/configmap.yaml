@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: mahasiswa-service
+data:
+  DATABASE_HOST: "10.42.29.87"
+  DATABASE_PORT: "5432"
+  FLYWAY_ENABLE: "false"
